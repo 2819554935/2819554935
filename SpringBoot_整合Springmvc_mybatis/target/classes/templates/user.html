@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form th:action="@{/user/}+${user.id}" method="post">
+<!-- @{./user/}+${user.id}就是当前页面再追加就变成了localhost:8080/user/user/10 -->
+<!-- @{/user/}+${user.id}就不会追加localhost:8080/user/10 -->
+
+id:<input type="text" name="id" th:field="${user.id}">
+	<input type="hidden" name="_method" value="PUT">
+<br/>
+用户名:<input type="text"  name="username" th:field="${user.username}" />
+<br/>
+密码:<input type="text"  name="password" th:field="${user.password}" />
+<br/>
+年龄:<input type="text" name="age" th:field="${user.age}" />
+<br/>
+<input type="submit" value="修改">
+
+</body>
+</html>

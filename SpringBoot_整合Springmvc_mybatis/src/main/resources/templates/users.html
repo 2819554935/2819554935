@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+<table>
+<tr>
+<th>id</th>
+<th>用户名</th>
+<th>密码</th>
+<th>年龄</th>
+<th>操作</th>
+</tr>
+
+<tr th:each="u:${users}">
+
+<td th:text="${u.id}"/>
+<td th:text="${u.username}"/>
+<td th:text="${u.password}"/>
+<td th:text="${u.age}"/>
+<td><a th:href='@{/user/}+${u.id}'>修改1</a>
+<a th:href='@{/user(id=${u.id})}'>修改2</a>
+<button th:onclick="'del('+${u.id}+')'">删除</button>
+<!-- rest风格删除必须是post,get使用不了
+所以只能form或ajax方式
+ -->
+</td>
+
+</tr>
+</table>
+<script type="text/javascript">
+
+function del(id){
+	 $.ajax({
+         type: "POST",
+         data: {"_method":"DELETE"},
+         url: "./user/"+id,
+         success: function (data) {
+             if (data.success) {
+            	 alert("删除成功");
+                 window.location.href = ("/users");
+             } else {
+                 alert("删除失败");
+             }
+         },
+         error: function (data) {
+        	 alert("删除失败:"+data);
+         }
+     });
+
+	
+}
+
+</script>
+</body>
+</html>

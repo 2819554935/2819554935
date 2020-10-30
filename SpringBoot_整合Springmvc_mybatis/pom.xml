@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.5.0.RELEASE</version>
+  </parent>
+  <groupId>com.ns</groupId>
+  <artifactId>SpringBoot_02</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <!-- 在springboot 2.0.0之后jdk必须用1.8 -->
+   <properties>
+  <java.version>1.7</java.version>
+  <thymeleaf.version>3.0.2.RELEASE</thymeleaf.version>
+  <thymeleaf-layout-dialect.version>2.0.4</thymeleaf-layout-dialect.version>
+  </properties>
+  
+  <dependencies>
+<!-- web启动器 -->
+   <dependency><!-- 里面含有springmvc 的jar -->
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+   </dependency>
+<!-- Thymeleaf启动器 -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
+<!-- 热启动，修改会自动重启 ,就不用每次改完代码都要重新跑启动类-->
+        <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-devtools</artifactId>
+           <optional>true</optional>
+        </dependency>
+<!-- mybatis启动器 -->
+<dependency>
+    <groupId>org.mybatis.spring.boot</groupId>
+    <artifactId>mybatis-spring-boot-starter</artifactId>
+    <version>1.1.1</version>
+</dependency>
+<!-- 数据库驱动 -->
+<dependency>
+<groupId>mysql</groupId>
+<artifactId>mysql-connector-java</artifactId>
+</dependency>
+
+<!-- druid数据库链接池 -->
+  <dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>druid</artifactId>
+    <version>1.0.9</version>
+</dependency>
+  </dependencies>
+  
+<build><!-- 热启动插件,配合spring-boot-devtools使用-->
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+                  <fork>true</fork>
+                </configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
